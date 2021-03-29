@@ -11,15 +11,10 @@
     </thead>
     <!-- tbody>tr*2>(th+td+td) -->
     <tbody>
-        <tr>
-            <th>1</th>
-            <td>Javier</td>
-            <td>Lete</td>
-        </tr>
-        <tr>
-            <th>2</th>
-            <td>Pepe</td>
-            <td>Pérez</td>
+        <tr *ngFor="let cliente of clientes">
+            <th>{{cliente.id}}</th>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellidos}}</td>
         </tr>
     </tbody>
 </table>
