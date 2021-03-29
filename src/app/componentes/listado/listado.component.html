@@ -17,7 +17,7 @@
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellidos}}</td>
             <td>
-                <a href="#">Editar</a>&nbsp;<a href="#">Borrar</a>
+                <a href="#">Editar</a>&nbsp;<a (click)="borrar(cliente.id)" href="#">Borrar</a>
             </td>
         </tr>
     </tbody>
