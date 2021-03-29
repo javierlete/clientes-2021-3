@@ -1,14 +1,14 @@
 <form>
     <div>
         <label for="nombre">Nombre</label>
-        <input id="nombre">
+        <input id="nombre" name="nombre" [(ngModel)]="cliente.nombre">
     </div>
     <div>
         <label for="apellidos">Apellidos</label>
-        <input id="apellidos">
+        <input id="apellidos" name="apellidos" [(ngModel)]="cliente.apellidos">
     </div>
     <div>
-        <button>Aceptar</button>
+        <button (click)="aceptar()">Aceptar</button>
     </div>
 
 </form>
