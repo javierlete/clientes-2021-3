@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ClienteService } from './../../servicios/cliente.service';
+import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/modelos/cliente';
 
 @Component({
@@ -6,9 +7,13 @@ import { Cliente } from 'src/app/modelos/cliente';
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent {
-  clientes: Cliente[] = [
-    { id: 1, nombre: 'Javier', apellidos: 'Lete' },
-    { id: 2, nombre: 'Pepillo', apellidos: 'Pérez' },
-  ];
+export class ListadoComponent implements OnInit {
+  clientes: Cliente[] = [];
+
+  constructor(private clienteService: ClienteService) {}
+
+  ngOnInit(): void {
+    this.clienteService.obtenerClientes().subscribe(
+      clientes => this.clientes = clientes);
+  }
 }
