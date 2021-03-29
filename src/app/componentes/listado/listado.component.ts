@@ -16,4 +16,8 @@ export class ListadoComponent implements OnInit {
     this.clienteService.obtenerClientes().subscribe(
       clientes => this.clientes = clientes);
   }
+
+  borrar(id: number): void {
+    this.clienteService.borrarCliente(id).subscribe();
+  }
 }
