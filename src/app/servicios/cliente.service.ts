@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ClienteService {
   private URL = 'http://localhost:3000/clientes/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.URL);
@@ -17,6 +17,14 @@ export class ClienteService {
 
   obtenerPorId(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(this.URL + id);
+  }
+
+  insertarCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.URL, cliente);
+  }
+
+  modificarCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(this.URL + cliente.id, cliente);
   }
 
   borrarCliente(id: number): Observable<Cliente> {
