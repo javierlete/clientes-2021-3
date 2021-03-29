@@ -13,11 +13,18 @@ export class ListadoComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit(): void {
+    this.cargarListado();
+  }
+
+  private cargarListado(): void {
     this.clienteService.obtenerClientes().subscribe(
       clientes => this.clientes = clientes);
   }
 
   borrar(id: number): void {
-    this.clienteService.borrarCliente(id).subscribe();
+    this.clienteService.borrarCliente(id).subscribe(
+      // this.cargarListado.bind(this)
+      _ => this.cargarListado()
+    );
   }
 }
