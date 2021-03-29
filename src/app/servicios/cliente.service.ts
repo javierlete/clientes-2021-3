@@ -15,6 +15,10 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.URL);
   }
 
+  obtenerPorId(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.URL + id);
+  }
+
   borrarCliente(id: number): Observable<Cliente> {
     return this.http.delete<Cliente>(this.URL + id);
   }
