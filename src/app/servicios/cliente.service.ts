@@ -14,4 +14,8 @@ export class ClienteService {
   obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.URL);
   }
+
+  borrarCliente(id: number): Observable<Cliente> {
+    return this.http.delete<Cliente>(this.URL + id);
+  }
 }
