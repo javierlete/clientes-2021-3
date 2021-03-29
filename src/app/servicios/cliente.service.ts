@@ -1,17 +1,17 @@
 import { Cliente } from 'src/app/modelos/cliente';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  clientes: Cliente[] = [
-    { id: 1, nombre: 'Javier', apellidos: 'Lete' },
-    { id: 2, nombre: 'Pepillo', apellidos: 'Pérez' },
-  ];
+  private URL = 'http://localhost:3000/clientes/';
+
+  constructor(private http: HttpClient) {}
 
   obtenerClientes(): Observable<Cliente[]> {
-    return of(this.clientes);
+    return this.http.get<Cliente[]>(this.URL);
   }
 }
