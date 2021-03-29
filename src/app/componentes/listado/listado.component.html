@@ -7,6 +7,7 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Apellidos</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <!-- tbody>tr*2>(th+td+td) -->
@@ -15,6 +16,13 @@
             <th>{{cliente.id}}</th>
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellidos}}</td>
+            <td>
+                <a href="#">Editar</a>&nbsp;<a href="#">Borrar</a>
+            </td>
         </tr>
     </tbody>
 </table>
+
+<br />
+
+<a href="#">Añadir</a>

@@ -15,3 +15,15 @@ th, td {
 tr:nth-child(even) {
     background: lightgray;
 }
+
+a {
+    text-decoration: none;
+    border: 1px solid darkgray;
+    color: black;
+    background: lightgray;
+    padding: 0.25em;
+}
+
+a:hover {
+    background: white;
+}
