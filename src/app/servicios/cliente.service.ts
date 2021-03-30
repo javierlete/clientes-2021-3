@@ -2,7 +2,7 @@ import { MensajeService } from './mensaje.service';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -17,7 +17,13 @@ export class ClienteService {
 
   obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.URL).pipe(
-      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros'))
+      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros')),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al pedir los registros');
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
     );
   }
 
