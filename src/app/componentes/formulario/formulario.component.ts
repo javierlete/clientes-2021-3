@@ -1,8 +1,7 @@
 import { ClienteService } from './../../servicios/cliente.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/modelos/cliente';
-import { Location } from '@angular/common';
 
 const CLIENTE_VACIO = { id: 0, nombre: '', apellidos: '' };
 
@@ -16,7 +15,8 @@ export class FormularioComponent implements OnInit {
   id = 0;
 
   constructor(
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private clienteService: ClienteService) { }
 
   aceptar(): void {
@@ -34,12 +34,12 @@ export class FormularioComponent implements OnInit {
   }
 
   volverAListado(): void {
-    // TODO: implementar navegación https://angular.io/guide/router#specifying-a-relative-route
+    this.router.navigate(['listado']);
   }
 
   ngOnInit(): void {
     // TODO: Demostrar problema con componente siempre a la vista
-    this.id = +this.router.snapshot.paramMap.get('id');
+    this.id = +this.route.snapshot.paramMap.get('id');
     console.log(this.id);
 
     if (this.id) {
