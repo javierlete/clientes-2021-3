@@ -1,6 +1,8 @@
+import { MensajeService } from './mensaje.service';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,10 +11,14 @@ import { HttpClient } from '@angular/common/http';
 export class ClienteService {
   private URL = 'http://localhost:3000/clientes/';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private mensajeService: MensajeService) { }
 
   obtenerClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.URL);
+    return this.http.get<Cliente[]>(this.URL).pipe(
+      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros'))
+    );
   }
 
   obtenerPorId(id: number): Observable<Cliente> {
