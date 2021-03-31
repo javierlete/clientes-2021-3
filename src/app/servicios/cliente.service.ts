@@ -17,9 +17,9 @@ export class ClienteService {
 
   obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.URL).pipe(
-      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros')),
+      tap(() => this.mensajeService.agregar({nivel: 'success', texto: 'Se han obtenido todos los registros'})),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al pedir los registros');
+        this.mensajeService.agregar({nivel: 'danger', texto: 'Ha habido un problema al pedir los registros'});
         this.mensajeService.agregar(err.message);
         console.error(err, caught);
         return [];

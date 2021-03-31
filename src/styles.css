@@ -4,3 +4,11 @@ body {
     font-family: sans-serif;
 }
 */
+
+.btn {
+    transition: color 1s ease-in-out,background-color 1s ease-in-out,border-color 1s ease-in-out,box-shadow 1s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: aqua;
+}
